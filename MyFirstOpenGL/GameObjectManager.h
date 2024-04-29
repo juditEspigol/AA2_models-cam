@@ -1,7 +1,5 @@
 #pragma once
 #include "Cube.h"
-#include "Orthohedron.h"
-#include "Pyramid.h"
 
 #define GAMEOBJECT_MANAGER GameObjectManager::Instance()
 
@@ -10,7 +8,6 @@ class GameObjectManager
 private:
 
 	GameObjectManager() = default;
-
 
 	GameObjectManager(const GameObjectManager&) = delete;
 	GameObjectManager& operator =(const GameObjectManager&) = delete;
@@ -22,7 +19,6 @@ public:
 		static GameObjectManager gameObjectManager;
 		return gameObjectManager;
 	}
-
 	~GameObjectManager();
 
 	std::vector<GameObject*> gameObjects;
