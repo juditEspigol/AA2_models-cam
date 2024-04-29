@@ -25,8 +25,6 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GLManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="Orthohedron.cpp" />
-    <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderProgramManager.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -45,8 +43,6 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GLManager.h" />
     <ClInclude Include="InputManager.h" />
-    <ClInclude Include="Orthohedron.h" />
-    <ClInclude Include="Pyramid.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderProgramManager.h" />
     <ClInclude Include="TimeManager.h" />
