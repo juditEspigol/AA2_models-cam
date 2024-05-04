@@ -16,31 +16,29 @@ int main() {
 	GL_MANAGER.ActivateBackCulling(); 
 
 	// Initialize GLEW and control errors Inicializamos GLEW y controlamos errores
-	if (glewInit() == GLEW_OK) {
-
-		GAMEOBJECT_MANAGER.CreateFigures(); 
-
-
+	if (glewInit() == GLEW_OK) 
+	{
 		// Define wich color we use for cleaning buffer
 		glClearColor(0.f, 0.f, 0.f, 1.f);
-
 		// Define draw mode to -> Fill
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+		GAMEOBJECT_MANAGER.CreateGameObjects();
 
 		//Assign initial values to programs
 		GAMEOBJECT_MANAGER.InitProgramsValues();
 
 		//Generate game loop
-		while (!glfwWindowShouldClose(GL_MANAGER.window)) {
-
+		while (!glfwWindowShouldClose(GL_MANAGER.window)) 
+		{
 			//Pull events (buttons, keys, mouse...)
 			glfwPollEvents();
-
 			//Clean buffers
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-			INPUT_MANAGER.Update();
 			TIME_MANAGER.Update();
+			
+			GAMEOBJECT_MANAGER.camera->Inputs(GL_MANAGER.window); 
 			
 			GAMEOBJECT_MANAGER.Update(TIME_MANAGER.GetDeltaTime());
 			GAMEOBJECT_MANAGER.Render();
@@ -52,15 +50,14 @@ int main() {
 
 		//Deactive & delete program
 		glUseProgram(0);
-		SHADERPROGRAM_MANAGER.DeletePrograms();
+		SHADERPROGRAM_MANAGER.DeleteAllPrograms();
 	}
-	else {
+	else 
+	{
 		std::cout << "Program Crashes" << std::endl;
 		glfwTerminate();
 	}
 
 	//Finish GLFW
 	glfwTerminate();
-
-	return 0;
 }

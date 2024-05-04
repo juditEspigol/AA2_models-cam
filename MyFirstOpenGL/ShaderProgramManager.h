@@ -21,5 +21,5 @@ public:
 
 	std::vector<GLuint> compiledPrograms;
 
-	void DeletePrograms();
+	void DeleteAllPrograms();
 };

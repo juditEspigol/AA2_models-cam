@@ -2,7 +2,6 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 
-
 static class MatrixUtilities
 {
 public:

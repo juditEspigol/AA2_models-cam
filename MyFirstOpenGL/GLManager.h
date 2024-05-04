@@ -3,7 +3,6 @@
 #include <GLFW/glfw3.h>
 
 #include "ShaderProgramManager.h"
-#include "GameObject.h"
 
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
