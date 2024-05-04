@@ -45,31 +45,31 @@ Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
 
 void Cube::Update(float _dt)
 {
-	// Apply velocity and rotation into forward direction
-	transform.position = transform.position + (transform.forward * velocity) * _dt;
-	transform.rotation = transform.rotation + (glm::vec3(0.f, 1.f, 0.f) * angularVelocity) * _dt;
+	//// Apply velocity and rotation into forward direction
+	//transform.position = transform.position + (transform.forward * velocity) * _dt;
+	//transform.rotation = transform.rotation + (glm::vec3(0.f, 1.f, 0.f) * angularVelocity) * _dt;
 
-	// Invert forward when reached screen limits
-	if (transform.position.y >= 0.5f || transform.position.y <= -0.5f) {
-		transform.forward = transform.forward * -1.f;
-	}
+	//// Invert forward when reached screen limits
+	//if (transform.position.y >= 0.5f || transform.position.y <= -0.5f) {
+	//	transform.forward = transform.forward * -1.f;
+	//}
 
-	translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-	rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
-	scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
+	//translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+	//rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
+	//scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
 
-	//Genero la matriz vista
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
+	////Genero la matriz vista
+	//glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
 
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
+	//glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+	//glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+	//glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
 }
 
 void Cube::Render()
 {
 	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
-	InitProgramValues();
+	//InitProgramValues();
 	glBindVertexArray(VAO);
 
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertexs);
@@ -80,10 +80,10 @@ void Cube::Render()
 
 void Cube::InitProgramValues()
 {
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
+	/*glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
 	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
 	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
 	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
 
-	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);*/
 }

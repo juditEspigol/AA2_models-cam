@@ -20,9 +20,8 @@ int main() {
 
 		GAMEOBJECT_MANAGER.CreateFigures(); 
 
-
 		// Define wich color we use for cleaning buffer
-		glClearColor(0.f, 0.f, 0.f, 1.f);
+		glClearColor(0.5f, 0.7f, 1.f, 1.f);
 
 		// Define draw mode to -> Fill
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);

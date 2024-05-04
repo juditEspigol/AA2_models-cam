@@ -25,10 +25,13 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GLManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderProgramManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FS_Semaphore.glsl" />
@@ -43,11 +46,14 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GLManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelManager.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderProgramManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="MatrixUtilities.h" />
+    <ClInclude Include="Troll.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

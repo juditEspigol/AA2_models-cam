@@ -1,4 +1,5 @@
 #include "GameObjectManager.h"
+#include "ModelManager.h"
 
 GameObjectManager::~GameObjectManager()
 {
@@ -11,6 +12,7 @@ GameObjectManager::~GameObjectManager()
 void GameObjectManager::CreateFigures()
 {
 	gameObjects.push_back(new Cube(glm::vec3(-0.6f, 0.f, 0.f), glm::vec3(0), glm::vec3(1.f)));
+	gameObjects.push_back(new Troll(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0), glm::vec3(0.5f), MODEL_MANAGER.models[0]));
 }
 
 void GameObjectManager::Update(float _dt)
