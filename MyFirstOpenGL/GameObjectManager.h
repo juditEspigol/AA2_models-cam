@@ -26,7 +26,6 @@ public:
 
 	void CreateFigures();
 
-	void Update(float _dt);
 	void Render();
 
 	void InitProgramsValues();

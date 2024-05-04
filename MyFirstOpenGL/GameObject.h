@@ -41,8 +41,6 @@ public:
 
 	~GameObject();
 
-	virtual void Update(float _dt) = 0;
-
 	virtual void Render() = 0;
 
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }

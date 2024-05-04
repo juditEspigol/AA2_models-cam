@@ -41,7 +41,6 @@ int main() {
 			INPUT_MANAGER.Update();
 			TIME_MANAGER.Update();
 			
-			GAMEOBJECT_MANAGER.Update(TIME_MANAGER.GetDeltaTime());
 			GAMEOBJECT_MANAGER.Render();
 
 			//Switch buffers

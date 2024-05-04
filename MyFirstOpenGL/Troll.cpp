@@ -35,35 +35,12 @@ Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model m
 
 }
 
-void Troll::Update(float _dt)
-{
-    ///// Apply velocity and rotation into forward direction
-    //transform.position = transform.position + (transform.forward * velocity) * _dt;
-    //transform.rotation = transform.rotation + (glm::vec3(0.f, 1.f, 0.f) * angularVelocity) * _dt;
-
-    //// Invert forward when reached screen limits
-    //if (transform.position.y >= 0.5f || transform.position.y <= -0.5f) {
-    //    transform.forward = transform.forward * -1.f;
-    //}
-
-    //translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-    //rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
-    //scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
-
-    ////Genero la matriz vista
-    //glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
-
-    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
-}
-
 void Troll::Render()
 {
     //Vinculo su VAO para ser usado
     glBindVertexArray(this->VAO);
 
-    //InitProgramValues();
+    InitProgramValues();
 
     // Dibujamos
     glDrawArrays(GL_TRIANGLES, 0, this->numVertexs);
@@ -74,10 +51,7 @@ void Troll::Render()
 
 void Troll::InitProgramValues()
 {
-    //glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
-    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
+    glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[1]);
 
-    //glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+    glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[1], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }

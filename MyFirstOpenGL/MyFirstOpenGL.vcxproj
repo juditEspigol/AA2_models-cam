@@ -34,9 +34,10 @@
     <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="FS_Semaphore.glsl" />
     <None Include="FS_YellowOrange.glsl" />
-    <None Include="VS_Pyramid.glsl" />
+    <None Include="TrollFragmentShader.glsl" />
+    <None Include="TrollGeometryShader.glsl" />
+    <None Include="TrollVertexShader.glsl" />
     <None Include="VS_Cubes.glsl" />
     <None Include="packages.config" />
   </ItemGroup>

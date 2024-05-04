@@ -9,21 +9,13 @@ ShaderProgramManager::ShaderProgramManager()
 		shaderProgramCube.LoadFragmentShader("FS_YellowOrange.glsl");
 		compiledPrograms.push_back(shaderProgramCube.CreateProgram(shaderProgramCube));
 
-		// ORTHOHEDRON PROGRAM
+		// TROLL PROGRAM
+		ShaderProgram shaderProgramTroll;
 
-		ShaderProgram shaderProgramOrthohedron;
-
-		shaderProgramOrthohedron.LoadVertexShader("VS_Cubes.glsl");
-		shaderProgramOrthohedron.LoadFragmentShader("FS_YellowOrange.glsl");
-		compiledPrograms.push_back(shaderProgramOrthohedron.CreateProgram(shaderProgramOrthohedron));
-
-
-		// PYRAMID PROGRAM
-		ShaderProgram shaderProgramPyramid;
-
-		shaderProgramPyramid.LoadVertexShader("VS_Pyramid.glsl");
-		shaderProgramPyramid.LoadFragmentShader("FS_Semaphore.glsl");
-		compiledPrograms.push_back(shaderProgramPyramid.CreateProgram(shaderProgramPyramid));
+		shaderProgramTroll.LoadVertexShader("TrollVertexShader.glsl");
+		shaderProgramTroll.LoadFragmentShader("TrollFragmentShader.glsl");
+		shaderProgramTroll.LoadGeometryShader("TrollGeometryShader.glsl");
+		compiledPrograms.push_back(shaderProgramTroll.CreateProgram(shaderProgramTroll));
 }
 
 void ShaderProgramManager::DeletePrograms()

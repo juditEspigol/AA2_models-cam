@@ -15,14 +15,6 @@ void GameObjectManager::CreateFigures()
 	gameObjects.push_back(new Troll(glm::vec3(0.f, 0.f, 0.f), glm::vec3(0), glm::vec3(0.5f), MODEL_MANAGER.models[0]));
 }
 
-void GameObjectManager::Update(float _dt)
-{
-	for (GameObject* gObj : gameObjects) 
-	{
-		gObj->Update(_dt);
-	}
-}
-
 void GameObjectManager::Render()
 {
 	for (GameObject* gObj : gameObjects)
