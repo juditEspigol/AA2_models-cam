@@ -31,7 +31,7 @@ public:
 
 	Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale);
 
-	virtual void Render() override;
+	virtual void Render(int index) override;
 
-	void InitProgramValues() override;
+	void InitProgramValues(int index) override;
 };

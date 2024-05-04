@@ -9,13 +9,30 @@ ShaderProgramManager::ShaderProgramManager()
 		shaderProgramCube.LoadFragmentShader("FS_YellowOrange.glsl");
 		compiledPrograms.push_back(shaderProgramCube.CreateProgram(shaderProgramCube));
 
-		// TROLL PROGRAM
-		ShaderProgram shaderProgramTroll;
+		// GREY TROLL PROGRAM
+		ShaderProgram shaderProgramGreyTroll;
 
-		shaderProgramTroll.LoadVertexShader("TrollVertexShader.glsl");
-		shaderProgramTroll.LoadFragmentShader("TrollFragmentShader.glsl");
-		shaderProgramTroll.LoadGeometryShader("TrollGeometryShader.glsl");
-		compiledPrograms.push_back(shaderProgramTroll.CreateProgram(shaderProgramTroll));
+		shaderProgramGreyTroll.LoadVertexShader("TrollVertexShader.glsl");
+		shaderProgramGreyTroll.LoadFragmentShader("TrollFragmentShaderGrey.glsl");
+		shaderProgramGreyTroll.LoadGeometryShader("TrollGeometryShader.glsl");
+		compiledPrograms.push_back(shaderProgramGreyTroll.CreateProgram(shaderProgramGreyTroll));
+
+		// GREEN TROLL PROGRAM
+		ShaderProgram shaderProgramGreenTroll;
+
+		shaderProgramGreenTroll.LoadVertexShader("TrollVertexShader.glsl");
+		shaderProgramGreenTroll.LoadFragmentShader("TrollFragmentShaderGreen.glsl");
+		shaderProgramGreenTroll.LoadGeometryShader("TrollGeometryShader.glsl");
+		compiledPrograms.push_back(shaderProgramGreenTroll.CreateProgram(shaderProgramGreenTroll));
+
+
+		// BLUE TROLL PROGRAM
+		ShaderProgram shaderProgramBlueTroll;
+
+		shaderProgramBlueTroll.LoadVertexShader("TrollVertexShader.glsl");
+		shaderProgramBlueTroll.LoadFragmentShader("TrollFragmentShaderBlue.glsl");
+		shaderProgramBlueTroll.LoadGeometryShader("TrollGeometryShader.glsl");
+		compiledPrograms.push_back(shaderProgramBlueTroll.CreateProgram(shaderProgramBlueTroll));
 }
 
 void ShaderProgramManager::DeletePrograms()

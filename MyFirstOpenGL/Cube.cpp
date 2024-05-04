@@ -43,10 +43,10 @@ Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
 	glBindVertexArray(0);
 }
 
-void Cube::Render()
+void Cube::Render(int index)
 {
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
-	InitProgramValues();
+	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[index]);
+	InitProgramValues(index);
 	glBindVertexArray(VAO);
 
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertexs);
@@ -55,11 +55,11 @@ void Cube::Render()
 	glUseProgram(0);
 }
 
-void Cube::InitProgramValues()
+void Cube::InitProgramValues(int index)
 {
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
+	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[index]);
 
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
 
-	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }

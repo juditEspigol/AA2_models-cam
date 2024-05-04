@@ -30,12 +30,16 @@
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderProgramManager.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="STB.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FS_YellowOrange.glsl" />
-    <None Include="TrollFragmentShader.glsl" />
+    <None Include="TrollFragmentShaderBlue.glsl" />
+    <None Include="TrollFragmentShaderGreen.glsl" />
+    <None Include="TrollFragmentShaderGrey.glsl" />
     <None Include="TrollGeometryShader.glsl" />
     <None Include="TrollVertexShader.glsl" />
     <None Include="VS_Cubes.glsl" />
@@ -51,6 +55,7 @@
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderProgramManager.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="MatrixUtilities.h" />
@@ -142,7 +147,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLM\include;$(SolutionDir)Dependencies\GLFW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLM\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

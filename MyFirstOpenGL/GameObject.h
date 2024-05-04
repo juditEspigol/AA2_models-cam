@@ -41,7 +41,7 @@ public:
 
 	~GameObject();
 
-	virtual void Render() = 0;
+	virtual void Render(int index) = 0;
 
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }
 
@@ -59,5 +59,5 @@ public:
 	inline bool GetIsActive() const { return isActive; }
 	inline void SetIsActive(const bool _value) { isActive = _value; }
 
-	virtual void InitProgramValues() = 0; 
+	virtual void InitProgramValues(int index) = 0; 
 };

@@ -3,6 +3,7 @@
 #include "GameObjectManager.h"
 #include "TimeManager.h"
 #include "InputManager.h"
+#include "TextureManager.h"
 
 int main() {
 
@@ -26,6 +27,8 @@ int main() {
 		// Define draw mode to -> Fill
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
+		TEXTURE_MANAGER.InitTexture();
+
 		//Assign initial values to programs
 		GAMEOBJECT_MANAGER.InitProgramsValues();
 
@@ -37,6 +40,9 @@ int main() {
 
 			//Clean buffers
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+
+			glEnable(GL_DEPTH_TEST);
+			glDepthFunc(GL_ALWAYS);
 
 			INPUT_MANAGER.Update();
 			TIME_MANAGER.Update();
