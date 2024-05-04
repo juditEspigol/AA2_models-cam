@@ -33,6 +33,14 @@ Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model m
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
+    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
+
+    if (transform.position != glm::vec3(0.f, 0.f, 0.f))
+        translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+        
+    if (transform.rotation != glm::vec3(0.f, 0.f, 0.f))
+        rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
+    
 }
 
 void Troll::Render()
@@ -52,6 +60,10 @@ void Troll::Render()
 void Troll::InitProgramValues()
 {
     glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[1]);
+
+    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[1], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[1], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[1], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
 
     glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[1], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }
