@@ -33,6 +33,15 @@ ShaderProgramManager::ShaderProgramManager()
 		shaderProgramBlueTroll.LoadFragmentShader("TrollFragmentShaderBlue.glsl");
 		shaderProgramBlueTroll.LoadGeometryShader("TrollGeometryShader.glsl");
 		compiledPrograms.push_back(shaderProgramBlueTroll.CreateProgram(shaderProgramBlueTroll));
+
+
+		// ROCK PROGRAM
+		ShaderProgram shaderProgramRock;
+
+		shaderProgramRock.LoadVertexShader("TrollVertexShader.glsl");
+		shaderProgramRock.LoadFragmentShader("RockFragmentShader.glsl");
+		shaderProgramRock.LoadGeometryShader("TrollGeometryShader.glsl");
+		compiledPrograms.push_back(shaderProgramRock.CreateProgram(shaderProgramRock));
 }
 
 void ShaderProgramManager::DeletePrograms()

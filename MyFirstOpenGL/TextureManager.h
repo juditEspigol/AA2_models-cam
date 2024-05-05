@@ -1,6 +1,7 @@
 #pragma once
 #include <stb_image.h>
 #include <GL/glew.h>
+#include <vector>
 
 #define TEXTURE_MANAGER TextureManager::Instance()
 
@@ -20,8 +21,10 @@ public:
 		return glManager;
 	}
 
+	GLuint textureId;
+
 	int width, heigth, nrChannels;
-	unsigned char* textureInfo;
+	std::vector<unsigned char*> textureInfo;
 
 	void InitTexture();
 

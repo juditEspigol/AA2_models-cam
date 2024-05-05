@@ -57,6 +57,24 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="STB.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="VS_Cubes.glsl">
@@ -66,11 +84,23 @@
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
     <None Include="packages.config" />
-    <None Include="FS_Semaphore.glsl">
+    <None Include="TrollFragmentShaderBlue.glsl">
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
-    <None Include="VS_Pyramid.glsl">
+    <None Include="TrollFragmentShaderGreen.glsl">
+      <Filter>Shaders\Fragment Shader</Filter>
+    </None>
+    <None Include="TrollFragmentShaderGrey.glsl">
+      <Filter>Shaders\Fragment Shader</Filter>
+    </None>
+    <None Include="TrollGeometryShader.glsl">
+      <Filter>Shaders\Geometry Shader</Filter>
+    </None>
+    <None Include="TrollVertexShader.glsl">
       <Filter>Shaders\Vertex Shader</Filter>
+    </None>
+    <None Include="RockFragmentShader.glsl">
+      <Filter>Shaders\Fragment Shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +133,21 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Troll.h">
+      <Filter>Archivos de encabezado\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Rock.h">
+      <Filter>Archivos de encabezado\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

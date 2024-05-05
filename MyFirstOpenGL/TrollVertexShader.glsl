@@ -16,11 +16,11 @@ void main() {
     if(translationMatrix != 0)
         model = model * translationMatrix;
 
-    if(rotationMatrixX != 0)
-        model = model * rotationMatrixX;
-
     if(rotationMatrix != 0)
         model = model * rotationMatrix;
+
+    if(rotationMatrixX != 0)
+        model = model * rotationMatrixX;
 
     uvsGeomretryShader = uvsVertexShader;
     gl_Position = model * vec4(position, 1.0);
