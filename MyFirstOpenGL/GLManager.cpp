@@ -3,7 +3,7 @@
 
 void GLManager::WindowsConfiguration()
 {
-	// iNITIALIZE glfw to manage window & inputs
+	// INITIALIZE glfw to manage window & inputs
 	glfwInit();
 
 	// Configurate the windows

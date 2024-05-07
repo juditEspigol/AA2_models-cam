@@ -57,6 +57,9 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="VS_Cubes.glsl">
@@ -70,6 +73,15 @@
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
     <None Include="VS_Pyramid.glsl">
+      <Filter>Shaders\Vertex Shader</Filter>
+    </None>
+    <None Include="FS_Camera.glsl">
+      <Filter>Shaders\Fragment Shader</Filter>
+    </None>
+    <None Include="GS_Camera.glsl">
+      <Filter>Shaders\Geometry Shader</Filter>
+    </None>
+    <None Include="VS_Camera.glsl">
       <Filter>Shaders\Vertex Shader</Filter>
     </None>
   </ItemGroup>
@@ -103,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Archivos de encabezado\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

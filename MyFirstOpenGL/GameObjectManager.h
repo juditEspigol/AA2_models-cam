@@ -1,5 +1,6 @@
 #pragma once
 #include "Cube.h"
+#include "Camera.h"
 
 #define GAMEOBJECT_MANAGER GameObjectManager::Instance()
 
@@ -21,12 +22,13 @@ public:
 	}
 	~GameObjectManager();
 
+	Camera* camera; 
 	std::vector<GameObject*> gameObjects;
 
-	void CreateFigures();
+	void CreateGameObjects();
+
+	void InitProgramsValues();
 
 	void Update(float _dt);
 	void Render();
-
-	void InitProgramsValues();
 };

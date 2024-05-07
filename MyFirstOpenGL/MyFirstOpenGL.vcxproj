@@ -20,6 +20,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
@@ -31,13 +32,17 @@
     <ClCompile Include="TimeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FS_Camera.glsl" />
     <None Include="FS_Semaphore.glsl" />
     <None Include="FS_YellowOrange.glsl" />
+    <None Include="GS_Camera.glsl" />
+    <None Include="VS_Camera.glsl" />
     <None Include="VS_Pyramid.glsl" />
     <None Include="VS_Cubes.glsl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />

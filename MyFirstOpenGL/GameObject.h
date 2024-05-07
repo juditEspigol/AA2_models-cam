@@ -1,49 +1,41 @@
 #pragma once
-#include <GL/glew.h>
 #include <gtc/type_ptr.hpp>
 #include <vector>
 
 #include "Transform.h"
-#include "MatrixUtilities.h"
-#include "TimeManager.h"
-#include "ShaderProgramManager.h"
+#include "GLManager.h"
 
 class GameObject
 {
 protected: 
 
-	Transform transform;
+	bool isActive;
 
+	Transform transform;
 	float velocity; 
 	float angularVelocity;
 	float scaleVelocity;
 
-	bool isActive;
-
-	unsigned int numVertexs;
-
 	std::vector<GLfloat> vertexs;
-
-	glm::mat4 translationMatrix;
-	glm::mat4 rotationMatrix;
-	glm::mat4 scaleMatrix;
-
+	unsigned int numVertexs;
 	GLuint VAO;
 	GLuint VBO;
 
 public:
 
-	GameObject()
-		: transform(Transform()), velocity(0.01f), angularVelocity(1.f), scaleVelocity(1.f), isActive(true) {};
-
 	GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
-		: transform(Transform(_position, _rotation, _scale)), velocity(1.f), angularVelocity(100.f), scaleVelocity(100.f), isActive(true) {};
-
+		: transform(Transform(_position, _rotation, _scale)), velocity(1.f), angularVelocity(100.f), scaleVelocity(100.f), isActive(true) 
+	{};
 	~GameObject();
 
-	virtual void Update(float _dt) = 0;
+	virtual void InitProgramValues() = 0;
 
+	virtual void Update(float _dt) = 0;
 	virtual void Render() = 0;
+
+	// GETTERS AND SETTERS
+	inline bool GetIsActive() const { return isActive; }
+	inline void SetIsActive(const bool _value) { isActive = _value; }
 
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }
 
@@ -57,9 +49,4 @@ public:
 
 	inline float GetScaleVelocity() const { return scaleVelocity; }
 	inline void SetScaleVelocity(const float _value) { scaleVelocity += _value; }
-
-	inline bool GetIsActive() const { return isActive; }
-	inline void SetIsActive(const bool _value) { isActive = _value; }
-
-	virtual void InitProgramValues() = 0; 
 };
