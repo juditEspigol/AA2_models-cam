@@ -1,23 +1,23 @@
 #include "Camera.h"
 
-Camera::Camera(float _fov, float _near, float _far, glm::vec3 _localVectorUp)
-	: GameObject(glm::vec3(0.5f, 0.5f, 1.f), glm::vec3(0.f), glm::vec3(1.f)),
+Camera::Camera(float _fov, float _near, float _far, unsigned int _indexProgram, glm::vec3 _localVectorUp)
+	: GameObject(glm::vec3(0.5f, 0.5f, 1.f), glm::vec3(0.f), glm::vec3(1.f), _indexProgram),
 	fov(_fov), near(_near), far(_far), localVectorUp(_localVectorUp)
 {}
 
 void Camera::InitProgramValues()
 {
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
+	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram]);
 
-	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 void Camera::Update(float _dt)
 {
 	viewMatrix = glm::lookAt(transform.position, transform.position + glm::vec3(0.f, 0.f, -1.f), localVectorUp);
 	projectionMatrix = glm::perspective(glm::radians(fov), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, near, far);
 
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "viewMatrix"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "projectionMatrix"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "viewMatrix"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "projectionMatrix"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
 }
 void Camera::Render()
 {

@@ -16,7 +16,7 @@ private:
 
 public:
 
-	Camera(float _fov, float _near, float _far, 
+	Camera(float _fov, float _near, float _far, unsigned int _indexProgram,
 		glm::vec3 _localVectorUp = glm::vec3(0.f, 1.f, 0.f));
 
 	void InitProgramValues() override;

@@ -1,7 +1,7 @@
 #include "Cube.h"
 
-Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
-	: GameObject(_position, _rotation, _scale) {
+Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigned int _indexProgram)
+	: GameObject(_position, _rotation, _scale, _indexProgram) {
 	
 	//Size (1 x 1 x 1)
 	vertexs = {
@@ -40,33 +40,30 @@ Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
+void Cube::InitProgramValues()
+{
+	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram]);
 
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+
+	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+}
 void Cube::Update(float _dt)
 {
 	translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
 	rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
 	scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
 
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
 }
-
 void Cube::Render()
 {
-	//InitProgramValues();
+	InitProgramValues();
 
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertexs);
 
 	glBindVertexArray(0);
-
-	//glUseProgram(0);
-}
-
-void Cube::InitProgramValues()
-{
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[0]);
-
-	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[0], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }

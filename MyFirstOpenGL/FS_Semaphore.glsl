@@ -6,6 +6,7 @@ uniform float time;
 
 void main(){
 	
+
 	if(time < 2.f){
 		fragColor = vec4(1.0, 0.0, 0.0, 1.0);
 	}

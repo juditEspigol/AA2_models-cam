@@ -12,7 +12,7 @@ private:
 
 public: 
 
-	Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale);
+	Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigned int _indexProgram);
 
 	void InitProgramValues() override;
 

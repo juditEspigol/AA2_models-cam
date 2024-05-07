@@ -10,6 +10,7 @@ class GameObject
 protected: 
 
 	bool isActive;
+	unsigned int indexProgram; 
 
 	Transform transform;
 	float velocity; 
@@ -23,20 +24,19 @@ protected:
 
 public:
 
-	GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
-		: transform(Transform(_position, _rotation, _scale)), velocity(1.f), angularVelocity(100.f), scaleVelocity(100.f), isActive(true) 
+	GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigned int _indexProgram)
+		: transform(Transform(_position, _rotation, _scale)), indexProgram(_indexProgram), velocity(1.f), angularVelocity(100.f), scaleVelocity(100.f), isActive(true)
 	{};
 	~GameObject();
 
 	virtual void InitProgramValues() = 0;
 
-	virtual void Update(float _dt) = 0;
 	virtual void Render() = 0;
+	virtual void Update(float _dt) = 0;
 
 	// GETTERS AND SETTERS
 	inline bool GetIsActive() const { return isActive; }
 	inline void SetIsActive(const bool _value) { isActive = _value; }
-
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }
 
 	inline Transform GetTransform() const { return transform; }

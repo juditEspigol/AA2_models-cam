@@ -3,6 +3,7 @@
 #include "GameObjectManager.h"
 #include "TimeManager.h"
 #include "InputManager.h"
+#include "TextureManager.h"
 
 int main() {
 
@@ -19,11 +20,13 @@ int main() {
 	if (glewInit() == GLEW_OK) 
 	{
 		// Define wich color we use for cleaning buffer
-		glClearColor(0.f, 0.f, 0.f, 1.f);
+		glClearColor(0.3f, 0.8f, 1.f, 1.f);
 		// Define draw mode to -> Fill
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 		GAMEOBJECT_MANAGER.CreateGameObjects();
+
+		TEXTURE_MANAGER.InitTexture();
 
 		//Assign initial values to programs
 		GAMEOBJECT_MANAGER.InitProgramsValues();
@@ -36,6 +39,7 @@ int main() {
 			//Clean buffers
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
+			//INPUT_MANAGER.Update();
 			TIME_MANAGER.Update();
 			
 			GAMEOBJECT_MANAGER.camera->Inputs(GL_MANAGER.window); 

@@ -26,10 +26,16 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GLManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
+    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="ShaderProgramManager.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="STB.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
+    <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FS_Camera.glsl" />
@@ -38,6 +44,12 @@
     <None Include="GS_Camera.glsl" />
     <None Include="VS_Camera.glsl" />
     <None Include="VS_Pyramid.glsl" />
+    <None Include="RockFragmentShader.glsl" />
+    <None Include="TrollFragmentShaderBlue.glsl" />
+    <None Include="TrollFragmentShaderGreen.glsl" />
+    <None Include="TrollFragmentShaderGrey.glsl" />
+    <None Include="TrollGeometryShader.glsl" />
+    <None Include="TrollVertexShader.glsl" />
     <None Include="VS_Cubes.glsl" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -48,11 +60,16 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GLManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="Rock.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="ShaderProgramManager.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="MatrixUtilities.h" />
+    <ClInclude Include="Troll.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -140,7 +157,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLM\include;$(SolutionDir)Dependencies\GLFW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLM\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\STB\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
