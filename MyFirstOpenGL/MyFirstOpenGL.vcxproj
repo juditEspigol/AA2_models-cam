@@ -48,9 +48,6 @@
     <None Include="TrollFragmentShaderBlue.glsl" />
     <None Include="TrollFragmentShaderGreen.glsl" />
     <None Include="TrollFragmentShaderGrey.glsl" />
-    <None Include="TrollGeometryShader.glsl" />
-    <None Include="TrollVertexShader.glsl" />
-    <None Include="VS_Cubes.glsl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

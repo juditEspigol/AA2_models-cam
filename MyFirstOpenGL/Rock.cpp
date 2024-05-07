@@ -67,7 +67,6 @@ void Rock::InitProgramValues()
     glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram]);
 
     glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "rotationMatrixX"), 1, GL_FALSE, glm::value_ptr(rotationMatrixX));
     glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
     glUniform1i(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "textureSampler"), 0);

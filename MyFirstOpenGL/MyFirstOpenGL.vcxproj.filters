@@ -80,9 +80,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="VS_Cubes.glsl">
-      <Filter>Shaders\Vertex Shader</Filter>
-    </None>
     <None Include="FS_YellowOrange.glsl">
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
@@ -96,12 +93,6 @@
     <None Include="TrollFragmentShaderGrey.glsl">
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
-    <None Include="TrollGeometryShader.glsl">
-      <Filter>Shaders\Geometry Shader</Filter>
-    </None>
-    <None Include="TrollVertexShader.glsl">
-      <Filter>Shaders\Vertex Shader</Filter>
-    </None>
     <None Include="FS_Camera.glsl">
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
@@ -114,6 +105,8 @@
     <None Include="RockFragmentShader.glsl">
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
+    <None Include="FS_Semaphore.glsl" />
+    <None Include="VS_Pyramid.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatrixUtilities.h">

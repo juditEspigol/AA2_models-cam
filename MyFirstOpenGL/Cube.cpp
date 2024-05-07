@@ -39,30 +39,35 @@ Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigned 
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
+
+	scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
+
+	if (transform.position != glm::vec3(0.f, 0.f, 0.f))
+		translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+
+	if (transform.rotation.y != 0)
+		rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
 }
 void Cube::InitProgramValues()
 {
 	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram]);
 
 	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
 
 	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 void Cube::Update(float _dt)
 {
-	translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-	rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
-	scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
 
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
 }
 void Cube::Render()
 {
+	glBindVertexArray(VAO);
+
 	InitProgramValues();
 
-	glBindVertexArray(VAO);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertexs);
 
 	glBindVertexArray(0);
