@@ -11,7 +11,14 @@ uniform mat4 scaleMatrix;
 
 void main() 
 {
-    mat4 model = translationMatrix * rotationMatrix * scaleMatrix;
+    mat4 model = translationMatrix;
+    
+    if(rotationMatrix != 0)
+    {
+        model = model * rotationMatrix;
+    }
+
+   model = model * scaleMatrix;
 
     uvsGeomretryShader = uvsVertexShader;
     gl_Position = model * vec4(position, 1.0);

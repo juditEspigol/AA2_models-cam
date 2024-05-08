@@ -117,3 +117,4 @@ Model ModelManager::LoadOBJModel(const std::string& filePath)
 	}
 	return Model(vertexs, textureCoordinates, vertexNormal);
 }
+

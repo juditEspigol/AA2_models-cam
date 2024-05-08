@@ -3,11 +3,13 @@
 #include <gtc/type_ptr.hpp>
 #include <vector>
 #include <stb_image.h>
+#include "GLManager.h"
 
 #include "Transform.h"
 #include "MatrixUtilities.h"
 #include "TimeManager.h"
 #include "ShaderProgram.h"
+#include "Model.h"
 
 class GameObject
 {
@@ -33,25 +35,29 @@ protected:
 
 	GLuint VAO;
 	GLuint VBO;
+	GLuint uvVBO;
 
 	GLuint textureId;
 	int width, heigth, nrChannels;
 	unsigned char* textureInfo;
 
+	bool hasTexture;
+
 public:
 
-	GameObject()
-		: transform(Transform()), velocity(0.01f), angularVelocity(1.f), scaleVelocity(1.f), isActive(true) {};
-
-	GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
-		: transform(Transform(_position, _rotation, _scale)), velocity(1.f), angularVelocity(100.f), scaleVelocity(100.f), isActive(true) {};
+	GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model,
+		std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath, bool hasTexture);
 
 	~GameObject();
 
-	virtual void Render(int index) = 0;
+	virtual void CreateModel(GLuint texture, const char* texturePath, Model model);
+	virtual void CreatePrimitive();
 
-	virtual void InitShader(std::string vertexShader, std::string geometryShader, std::string fragmentShader) = 0;
+	virtual void InitShader(std::string vertexShader, std::string geometryShader, std::string fragmentShader);
 	virtual void InitTexture(GLuint texture, const char* texturePath);
+	virtual void InitProgramValues();
+	
+	virtual void Render();
 
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }
 
@@ -69,5 +75,5 @@ public:
 	inline bool GetIsActive() const { return isActive; }
 	inline void SetIsActive(const bool _value) { isActive = _value; }
 
-	virtual void InitProgramValues(int index) = 0; 
+
 };

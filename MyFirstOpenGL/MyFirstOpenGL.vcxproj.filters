@@ -63,12 +63,9 @@
     <ClCompile Include="STB.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Troll.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="VS_Cubes.glsl">
+    <None Include="VS.glsl">
       <Filter>Shaders\Vertex Shader</Filter>
     </None>
     <None Include="FS_YellowOrange.glsl">
@@ -80,9 +77,6 @@
     </None>
     <None Include="TrollGeometryShader.glsl">
       <Filter>Shaders\Geometry Shader</Filter>
-    </None>
-    <None Include="TrollVertexShader.glsl">
-      <Filter>Shaders\Vertex Shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -118,9 +112,6 @@
     </ClInclude>
     <ClInclude Include="ModelManager.h">
       <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Troll.h">
-      <Filter>Archivos de encabezado\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

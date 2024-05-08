@@ -31,14 +31,12 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="STB.cpp" />
     <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FS_YellowOrange.glsl" />
     <None Include="TrollFragmentShaderGrey.glsl" />
     <None Include="TrollGeometryShader.glsl" />
-    <None Include="TrollVertexShader.glsl" />
-    <None Include="VS_Cubes.glsl" />
+    <None Include="VS.glsl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -53,7 +51,6 @@
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="MatrixUtilities.h" />
-    <ClInclude Include="Troll.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

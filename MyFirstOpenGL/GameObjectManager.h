@@ -1,6 +1,5 @@
 #pragma once
-#include "Cube.h"
-#include "Troll.h"
+#include "GameObject.h"
 
 #define GAMEOBJECT_MANAGER GameObjectManager::Instance()
 
