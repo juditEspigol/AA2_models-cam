@@ -26,29 +26,29 @@ ShaderProgramManager::ShaderProgramManager()
 	shaderProgramGreyTroll.LoadFragmentShader("TrollFragmentShaderGrey.glsl");
 	compiledPrograms.push_back(shaderProgramGreyTroll.CreateProgram(shaderProgramGreyTroll));
 
-	// GREEN TROLL PROGRAM >> 3
-	ShaderProgram shaderProgramGreenTroll;
+	//// GREEN TROLL PROGRAM >> 3
+	//ShaderProgram shaderProgramGreenTroll;
 
-	shaderProgramGreenTroll.LoadVertexShader("VS_Camera.glsl");
-	shaderProgramGreenTroll.LoadGeometryShader("GS_Camera.glsl");
-	shaderProgramGreenTroll.LoadFragmentShader("TrollFragmentShaderGreen.glsl");
-	compiledPrograms.push_back(shaderProgramGreenTroll.CreateProgram(shaderProgramGreenTroll));
+	//shaderProgramGreenTroll.LoadVertexShader("VS_Camera.glsl");
+	//shaderProgramGreenTroll.LoadGeometryShader("GS_Camera.glsl");
+	//shaderProgramGreenTroll.LoadFragmentShader("TrollFragmentShaderGreen.glsl");
+	//compiledPrograms.push_back(shaderProgramGreenTroll.CreateProgram(shaderProgramGreenTroll));
 
-	// BLUE TROLL PROGRAM >> 4
-	ShaderProgram shaderProgramBlueTroll;
+	//// BLUE TROLL PROGRAM >> 4
+	//ShaderProgram shaderProgramBlueTroll;
 
-	shaderProgramBlueTroll.LoadVertexShader("VS_Camera.glsl");
-	shaderProgramBlueTroll.LoadGeometryShader("GS_Camera.glsl");
-	shaderProgramBlueTroll.LoadFragmentShader("TrollFragmentShaderBlue.glsl");
-	compiledPrograms.push_back(shaderProgramBlueTroll.CreateProgram(shaderProgramBlueTroll));
+	//shaderProgramBlueTroll.LoadVertexShader("VS_Camera.glsl");
+	//shaderProgramBlueTroll.LoadGeometryShader("GS_Camera.glsl");
+	//shaderProgramBlueTroll.LoadFragmentShader("TrollFragmentShaderBlue.glsl");
+	//compiledPrograms.push_back(shaderProgramBlueTroll.CreateProgram(shaderProgramBlueTroll));
 
-	// ROCK PROGRAM >> 5
-	ShaderProgram shaderProgramRock;
+	//// ROCK PROGRAM >> 5
+	//ShaderProgram shaderProgramRock;
 
-	shaderProgramRock.LoadVertexShader("VS_Camera.glsl");
-	shaderProgramRock.LoadGeometryShader("GS_Camera.glsl");
-	shaderProgramRock.LoadFragmentShader("RockFragmentShader.glsl");
-	compiledPrograms.push_back(shaderProgramRock.CreateProgram(shaderProgramRock));
+	//shaderProgramRock.LoadVertexShader("VS_Camera.glsl");
+	//shaderProgramRock.LoadGeometryShader("GS_Camera.glsl");
+	//shaderProgramRock.LoadFragmentShader("RockFragmentShader.glsl");
+	//compiledPrograms.push_back(shaderProgramRock.CreateProgram(shaderProgramRock));
 }
 
 void ShaderProgramManager::DeleteAllPrograms()
