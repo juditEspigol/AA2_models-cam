@@ -1,11 +1,13 @@
 #include "Troll.h"
 #include "GLManager.h"
 
-Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model) 
+Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model,
+    std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath)
 	: GameObject(_position, _rotation, _scale)
 {
 
-    InitShader();
+    InitShader(vertexShader, geometryShader, fragmentShader);
+    InitTexture(texture, texturePath);
 
     //Almaceno la cantidad de vertices que habra
     this->numVertexs = model.vertexs.size() / 3;
@@ -37,16 +39,8 @@ Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model m
     glBindVertexArray(0);
 
     scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
-
-    if (transform.position != glm::vec3(0.f, 0.f, 0.f))
-        translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-        
-    if (transform.rotation.y != 0)
-        rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
-
-    if (transform.rotation.x != 0)
-        rotationMatrixX = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.x);
-      
+    translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+    rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.x);     
 }
 
 void Troll::Render(int index)
@@ -63,13 +57,13 @@ void Troll::Render(int index)
     glBindVertexArray(0);
 }
 
-void Troll::InitShader()
+void Troll::InitShader(std::string vertexShader, std::string geometryShader, std::string fragmentShader)
 {
     ShaderProgram shaderProgramCube;
 
-    shaderProgramCube.LoadVertexShader("TrollVertexShader.glsl");
-    shaderProgramCube.LoadGeometryShader("TrollGeometryShader.glsl");
-    shaderProgramCube.LoadFragmentShader("TrollFragmentShaderGrey.glsl");
+    shaderProgramCube.LoadVertexShader(vertexShader);
+    shaderProgramCube.LoadGeometryShader(geometryShader);
+    shaderProgramCube.LoadFragmentShader(fragmentShader);
 
     shaderProgram = shaderProgramCube.CreateProgram(shaderProgramCube);
 }
@@ -79,7 +73,6 @@ void Troll::InitProgramValues(int index)
     glUseProgram(shaderProgram);
 
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotationMatrixX"), 1, GL_FALSE, glm::value_ptr(rotationMatrixX));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
     glUniform1i(glGetUniformLocation(shaderProgram, "textureSampler"), 0);

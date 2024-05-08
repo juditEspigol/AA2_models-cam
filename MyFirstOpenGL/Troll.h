@@ -6,14 +6,14 @@ class Troll : public GameObject
 {
 private:
 	GLuint uvVBO;
-	glm::mat4 rotationMatrixX;
 
 public:
-	Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model);
+	Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model, 
+		std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath);
 
 	virtual void Render(int index) override;
 
-	virtual void InitShader() override;
+	virtual void InitShader(std::string vertexShader, std::string geometryShader, std::string fragmentShader) override;
 
 	void InitProgramValues(int index) override;
 };

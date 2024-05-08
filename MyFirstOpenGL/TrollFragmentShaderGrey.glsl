@@ -7,10 +7,12 @@ in vec2 uvsFragmentShader;
 
 out vec4 fragColor;
 
-
-void main() {
-        
+void main() 
+{
        vec2 adjustedTexCoord = vec2(uvsFragmentShader.x, 1.0 - uvsFragmentShader.y);
-       fragColor = texture(textureSampler, adjustedTexCoord) * vec4(0.9, 0.9, 0.9, 1.0);
+       vec4 baseColor = texture(textureSampler, adjustedTexCoord);  
 
+       vec4 ambientColor = vec4(0.8, 0.8, 0.8, 1.0);
+
+       fragColor =  baseColor * ambientColor; 
 }

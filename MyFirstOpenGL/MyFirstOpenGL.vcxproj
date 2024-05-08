@@ -27,19 +27,14 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelManager.cpp" />
-    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="STB.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FS_YellowOrange.glsl" />
-    <None Include="RockFragmentShader.glsl" />
-    <None Include="TrollFragmentShaderBlue.glsl" />
-    <None Include="TrollFragmentShaderGreen.glsl" />
     <None Include="TrollFragmentShaderGrey.glsl" />
     <None Include="TrollGeometryShader.glsl" />
     <None Include="TrollVertexShader.glsl" />
@@ -54,9 +49,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelManager.h" />
-    <ClInclude Include="Rock.h" />
     <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="MatrixUtilities.h" />

@@ -48,9 +48,6 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
-    <ClCompile Include="ShaderProgramManager.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
     <ClCompile Include="TimeManager.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
@@ -66,13 +63,7 @@
     <ClCompile Include="STB.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Troll.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="Rock.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -84,12 +75,6 @@
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
     <None Include="packages.config" />
-    <None Include="TrollFragmentShaderBlue.glsl">
-      <Filter>Shaders\Fragment Shader</Filter>
-    </None>
-    <None Include="TrollFragmentShaderGreen.glsl">
-      <Filter>Shaders\Fragment Shader</Filter>
-    </None>
     <None Include="TrollFragmentShaderGrey.glsl">
       <Filter>Shaders\Fragment Shader</Filter>
     </None>
@@ -98,9 +83,6 @@
     </None>
     <None Include="TrollVertexShader.glsl">
       <Filter>Shaders\Vertex Shader</Filter>
-    </None>
-    <None Include="RockFragmentShader.glsl">
-      <Filter>Shaders\Fragment Shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -118,9 +100,6 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Archivos de encabezado\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="ShaderProgramManager.h">
-      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
       <Filter>Archivos de encabezado\GameObjects</Filter>
@@ -140,13 +119,7 @@
     <ClInclude Include="ModelManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Troll.h">
-      <Filter>Archivos de encabezado\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Rock.h">
       <Filter>Archivos de encabezado\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>

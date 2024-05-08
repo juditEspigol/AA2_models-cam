@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <gtc/type_ptr.hpp>
 #include <vector>
+#include <stb_image.h>
 
 #include "Transform.h"
 #include "MatrixUtilities.h"
@@ -33,6 +34,10 @@ protected:
 	GLuint VAO;
 	GLuint VBO;
 
+	GLuint textureId;
+	int width, heigth, nrChannels;
+	unsigned char* textureInfo;
+
 public:
 
 	GameObject()
@@ -45,7 +50,8 @@ public:
 
 	virtual void Render(int index) = 0;
 
-	virtual void InitShader() = 0;
+	virtual void InitShader(std::string vertexShader, std::string geometryShader, std::string fragmentShader) = 0;
+	virtual void InitTexture(GLuint texture, const char* texturePath);
 
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }
 

@@ -7,20 +7,11 @@ out vec2 uvsGeomretryShader;
 
 uniform mat4 translationMatrix;
 uniform mat4 rotationMatrix;
-uniform mat4 rotationMatrixX;
 uniform mat4 scaleMatrix;
 
-void main() {
-    mat4 model = scaleMatrix;
-
-    if(translationMatrix != 0)
-        model = model * translationMatrix;
-
-    if(rotationMatrix != 0)
-        model = model * rotationMatrix;
-
-    if(rotationMatrixX != 0)
-        model = model * rotationMatrixX;
+void main() 
+{
+    mat4 model = translationMatrix * rotationMatrix * scaleMatrix;
 
     uvsGeomretryShader = uvsVertexShader;
     gl_Position = model * vec4(position, 1.0);

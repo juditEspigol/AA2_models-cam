@@ -1,10 +1,10 @@
 #include "Cube.h"
 #include "GLManager.h"
 
-Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
+Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, std::string vertexShader, std::string geometryShader, std::string fragmentShader)
 	: GameObject(_position, _rotation, _scale) {
 	
-	InitShader();
+	InitShader(vertexShader, geometryShader, fragmentShader);
 
 	//Size (0.4 x 0.4 x 0.4)
 	vertexs = {
@@ -57,12 +57,12 @@ void Cube::Render(int index)
 	glUseProgram(0);
 }
 
-void Cube::InitShader()
+void Cube::InitShader(std::string vertexShader, std::string geometryShader, std::string fragmentShader)
 {
 	ShaderProgram shaderProgramCube;
 
-	shaderProgramCube.LoadVertexShader("VS_Cubes.glsl");
-	shaderProgramCube.LoadFragmentShader("FS_YellowOrange.glsl");
+	shaderProgramCube.LoadVertexShader(vertexShader);
+	shaderProgramCube.LoadFragmentShader(fragmentShader);
 
 	shaderProgram = shaderProgramCube.CreateProgram(shaderProgramCube);
 }
