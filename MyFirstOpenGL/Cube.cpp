@@ -3,6 +3,8 @@
 Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigned int _indexProgram)
 	: GameObject(_position, _rotation, _scale, _indexProgram) {
 	
+	CreateShaderProgram(); 
+
 	//Size (1 x 1 x 1)
 	vertexs = {
 		-0.5f, +0.5f, -0.5f, // 3
@@ -71,4 +73,14 @@ void Cube::Render()
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, numVertexs);
 
 	glBindVertexArray(0);
+}
+
+void Cube::CreateShaderProgram()
+{
+	ShaderProgram shaderProgramCube;
+
+	shaderProgramCube.LoadVertexShader("VS_Camera.glsl");
+	shaderProgramCube.LoadGeometryShader("GS_Camera.glsl");
+	shaderProgramCube.LoadFragmentShader("FS_YellowOrange.glsl");
+	SHADERPROGRAM_MANAGER.compiledPrograms.push_back(shaderProgramCube.CreateProgram(shaderProgramCube));
 }

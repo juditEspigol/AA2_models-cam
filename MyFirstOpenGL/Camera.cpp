@@ -1,9 +1,11 @@
 #include "Camera.h"
 
 Camera::Camera(float _fov, float _near, float _far, unsigned int _indexProgram, glm::vec3 _localVectorUp)
-	: GameObject(glm::vec3(0.5f, 0.5f, 1.f), glm::vec3(0.f), glm::vec3(1.f), _indexProgram),
+	: GameObject(glm::vec3(0.f, 0.f, 1.f), glm::vec3(0.f), glm::vec3(1.f), _indexProgram),
 	fov(_fov), near(_near), far(_far), localVectorUp(_localVectorUp)
-{}
+{ 
+	//CreateShaderProgram();
+}
 
 void Camera::InitProgramValues()
 {
@@ -21,6 +23,16 @@ void Camera::Update(float _dt)
 }
 void Camera::Render()
 {
+}
+
+void Camera::CreateShaderProgram()
+{
+	ShaderProgram shaderProgramCamera;
+
+	shaderProgramCamera.LoadVertexShader("VS_Camera.glsl");
+	shaderProgramCamera.LoadGeometryShader("GS_Camera.glsl");
+	shaderProgramCamera.LoadFragmentShader("FS_Camera.glsl");
+	SHADERPROGRAM_MANAGER.compiledPrograms.push_back(shaderProgramCamera.CreateProgram(shaderProgramCamera));
 }
 
 void Camera::Inputs(GLFWwindow* _window)

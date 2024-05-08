@@ -5,12 +5,11 @@
 #include "InputManager.h"
 #include "TextureManager.h"
 
-int main() {
-
+int main() 
+{
 	srand(static_cast<unsigned int>(time(NULL)));
 
 	GL_MANAGER.WindowsConfiguration(); 
-
 	// Give GLEW permission to use experimental functionalities
 	glewExperimental = GL_TRUE;
 
@@ -44,7 +43,7 @@ int main() {
 			
 			GAMEOBJECT_MANAGER.camera->Inputs(GL_MANAGER.window); 
 			
-			GAMEOBJECT_MANAGER.Update(TIME_MANAGER.GetDeltaTime());
+			//GAMEOBJECT_MANAGER.Update(TIME_MANAGER.GetDeltaTime());
 			GAMEOBJECT_MANAGER.Render();
 
 			//Switch buffers

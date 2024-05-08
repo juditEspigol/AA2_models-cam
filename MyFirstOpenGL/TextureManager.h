@@ -24,7 +24,7 @@ public:
 	GLuint textureId;
 
 	int width, heigth, nrChannels;
-	std::vector<unsigned char*> textureInfo;
+	unsigned char* textureInfo;
 
 	void InitTexture();
 

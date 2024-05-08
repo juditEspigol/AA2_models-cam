@@ -4,6 +4,11 @@
 Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigned int _indexProgram, Model _model) 
 	: GameObject(_position, _rotation, _scale, _indexProgram)
 {
+    //// SHADER PROGRAM
+    CreateShaderProgram(); 
+
+    //// GAME OBJECT THINGS
+
     //Almaceno la cantidad de vertices que habra
     this->numVertexs = _model.vertexs.size() / 3;
 
@@ -32,26 +37,23 @@ Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, unsigne
     //Desvinculamos VAO y VBO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-
-    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
-
-    if (transform.position != glm::vec3(0.f, 0.f, 0.f))
-        translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-        
-    if (transform.rotation.y != 0)
-        rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
-      
+ 
 }
 void Troll::InitProgramValues()
 {
     glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram]);
 
+    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
+    translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+    rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.y);
+
+    glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+
+    glUniform1i(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "textureSampler"), 0);
+
     glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
-    glUniform1i(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "textureSampler"), 0);
-
-    glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 
 void Troll::Update(float _dt)
@@ -62,11 +64,20 @@ void Troll::Render()
     //Vinculo su VAO para ser usado
     glBindVertexArray(this->VAO);
 
-    InitProgramValues();
-
     // Dibujamos
     glDrawArrays(GL_TRIANGLES, 0, this->numVertexs);
 
     //Desvinculamos VAO
     glBindVertexArray(0);
+}
+
+void Troll::CreateShaderProgram()
+{
+    ShaderProgram shaderProgramGreyTroll;
+
+    shaderProgramGreyTroll.LoadVertexShader("VS_Camera.glsl");
+    shaderProgramGreyTroll.LoadGeometryShader("GS_Camera.glsl");
+    shaderProgramGreyTroll.LoadFragmentShader("TrollFragmentShaderGrey.glsl");
+    SHADERPROGRAM_MANAGER.compiledPrograms.push_back(shaderProgramGreyTroll.CreateProgram(shaderProgramGreyTroll));
+
 }

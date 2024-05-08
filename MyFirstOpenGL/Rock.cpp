@@ -62,6 +62,10 @@ void Rock::Render()
 
 }
 
+void Rock::CreateShaderProgram()
+{
+}
+
 void Rock::InitProgramValues()
 {
     glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[indexProgram]);

@@ -42,9 +42,6 @@
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>

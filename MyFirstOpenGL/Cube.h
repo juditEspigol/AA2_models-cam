@@ -18,4 +18,6 @@ public:
 
 	virtual void Update(float _dt) override;
 	virtual void Render() override;
+
+	void CreateShaderProgram() override;
 };

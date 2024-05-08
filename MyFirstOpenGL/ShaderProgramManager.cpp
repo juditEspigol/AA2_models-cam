@@ -3,28 +3,28 @@
 ShaderProgramManager::ShaderProgramManager()
 {
 	// CAMERA PROGRAM >> 0
-	ShaderProgram shaderProgramCamera;
+	/*ShaderProgram shaderProgramCamera;
 
 	shaderProgramCamera.LoadVertexShader("VS_Camera.glsl");
 	shaderProgramCamera.LoadGeometryShader("GS_Camera.glsl");
-	//shaderProgramCamera.LoadFragmentShader("FS_Camera.glsl");
-	compiledPrograms.push_back(shaderProgramCamera.CreateProgram(shaderProgramCamera));
+	shaderProgramCamera.LoadFragmentShader("FS_Camera.glsl");
+	compiledPrograms.push_back(shaderProgramCamera.CreateProgram(shaderProgramCamera));*/
 
 	// CUBE PROGRAM >> 1
-	ShaderProgram shaderProgramCube;
-
+	/*ShaderProgram shaderProgramCube;
+	
 	shaderProgramCube.LoadVertexShader("VS_Camera.glsl");
 	shaderProgramCube.LoadGeometryShader("GS_Camera.glsl");
 	shaderProgramCube.LoadFragmentShader("FS_YellowOrange.glsl");
-	compiledPrograms.push_back(shaderProgramCube.CreateProgram(shaderProgramCube));
+	compiledPrograms.push_back(shaderProgramCube.CreateProgram(shaderProgramCube));*/
 
 	// GREY TROLL PROGRAM >> 2
-	ShaderProgram shaderProgramGreyTroll;
+	/*ShaderProgram shaderProgramGreyTroll;
 
 	shaderProgramGreyTroll.LoadVertexShader("VS_Camera.glsl");
 	shaderProgramGreyTroll.LoadGeometryShader("GS_Camera.glsl");
 	shaderProgramGreyTroll.LoadFragmentShader("TrollFragmentShaderGrey.glsl");
-	compiledPrograms.push_back(shaderProgramGreyTroll.CreateProgram(shaderProgramGreyTroll));
+	compiledPrograms.push_back(shaderProgramGreyTroll.CreateProgram(shaderProgramGreyTroll));*/
 
 	//// GREEN TROLL PROGRAM >> 3
 	//ShaderProgram shaderProgramGreenTroll;
