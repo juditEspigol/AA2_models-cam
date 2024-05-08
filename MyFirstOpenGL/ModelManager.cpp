@@ -2,8 +2,8 @@
 
 ModelManager::ModelManager()
 {
-	models.push_back(LoadOBJModel("Assets/Models/Troll.obj"));
-	models.push_back(LoadOBJModel("Assets/Models/Rock.obj"));
+	models.push_back(LoadOBJModel("Assets/Modelos/Troll.obj"));
+	models.push_back(LoadOBJModel("Assets/Modelos/Rock.obj"));
 }
 
 Model ModelManager::LoadOBJModel(const std::string& filePath)

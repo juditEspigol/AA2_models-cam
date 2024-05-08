@@ -58,15 +58,19 @@ void Rock::Render(int index)
     glBindVertexArray(0);
 }
 
+void Rock::InitShader()
+{
+}
+
 void Rock::InitProgramValues(int index)
 {
-    glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[4]);
+    //glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[4]);
 
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "rotationMatrixX"), 1, GL_FALSE, glm::value_ptr(rotationMatrixX));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
-    glUniform1i(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "textureSampler"), 0);
+    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "rotationMatrixX"), 1, GL_FALSE, glm::value_ptr(rotationMatrixX));
+    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+    //glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
+    //glUniform1i(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "textureSampler"), 0);
 
-    glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+    //glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[4], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }

@@ -4,6 +4,8 @@
 Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
 	: GameObject(_position, _rotation, _scale) {
 	
+	InitShader();
+
 	//Size (0.4 x 0.4 x 0.4)
 	vertexs = {
 		-0.65f, +0.f, -0.5f, // 3
@@ -45,7 +47,7 @@ Cube::Cube(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale)
 
 void Cube::Render(int index)
 {
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[index]);
+	glUseProgram(shaderProgram);
 	InitProgramValues(index);
 	glBindVertexArray(VAO);
 
@@ -55,11 +57,21 @@ void Cube::Render(int index)
 	glUseProgram(0);
 }
 
+void Cube::InitShader()
+{
+	ShaderProgram shaderProgramCube;
+
+	shaderProgramCube.LoadVertexShader("VS_Cubes.glsl");
+	shaderProgramCube.LoadFragmentShader("FS_YellowOrange.glsl");
+
+	shaderProgram = shaderProgramCube.CreateProgram(shaderProgramCube);
+}
+
 void Cube::InitProgramValues(int index)
 {
-	glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[index]);
+	glUseProgram(shaderProgram);
 
-	glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
 
-	glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+	glUniform2f(glGetUniformLocation(shaderProgram, "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }

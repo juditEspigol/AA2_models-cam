@@ -4,6 +4,9 @@
 Troll::Troll(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model) 
 	: GameObject(_position, _rotation, _scale)
 {
+
+    InitShader();
+
     //Almaceno la cantidad de vertices que habra
     this->numVertexs = model.vertexs.size() / 3;
 
@@ -60,15 +63,26 @@ void Troll::Render(int index)
     glBindVertexArray(0);
 }
 
+void Troll::InitShader()
+{
+    ShaderProgram shaderProgramCube;
+
+    shaderProgramCube.LoadVertexShader("TrollVertexShader.glsl");
+    shaderProgramCube.LoadGeometryShader("TrollGeometryShader.glsl");
+    shaderProgramCube.LoadFragmentShader("TrollFragmentShaderGrey.glsl");
+
+    shaderProgram = shaderProgramCube.CreateProgram(shaderProgramCube);
+}
+
 void Troll::InitProgramValues(int index)
 {
-    glUseProgram(SHADERPROGRAM_MANAGER.compiledPrograms[index]);
+    glUseProgram(shaderProgram);
 
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "rotationMatrixX"), 1, GL_FALSE, glm::value_ptr(rotationMatrixX));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
-    glUniformMatrix4fv(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
-    glUniform1i(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "textureSampler"), 0);
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotationMatrixX"), 1, GL_FALSE, glm::value_ptr(rotationMatrixX));
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
+    glUniform1i(glGetUniformLocation(shaderProgram, "textureSampler"), 0);
 
-    glUniform2f(glGetUniformLocation(SHADERPROGRAM_MANAGER.compiledPrograms[index], "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
+    glUniform2f(glGetUniformLocation(shaderProgram, "windowSize"), WINDOW_WIDTH, WINDOW_HEIGHT);
 }

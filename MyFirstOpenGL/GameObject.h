@@ -6,7 +6,7 @@
 #include "Transform.h"
 #include "MatrixUtilities.h"
 #include "TimeManager.h"
-#include "ShaderProgramManager.h"
+#include "ShaderProgram.h"
 
 class GameObject
 {
@@ -28,6 +28,8 @@ protected:
 	glm::mat4 rotationMatrix;
 	glm::mat4 scaleMatrix;
 
+	GLuint shaderProgram;
+
 	GLuint VAO;
 	GLuint VBO;
 
@@ -42,6 +44,8 @@ public:
 	~GameObject();
 
 	virtual void Render(int index) = 0;
+
+	virtual void InitShader() = 0;
 
 	inline std::vector<GLfloat> GetVertexs() const { return vertexs; }
 

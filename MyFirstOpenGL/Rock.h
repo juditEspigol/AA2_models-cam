@@ -13,5 +13,7 @@ public:
 
 	virtual void Render(int index) override;
 
+	virtual void InitShader() override;
+
 	void InitProgramValues(int index) override;
 };

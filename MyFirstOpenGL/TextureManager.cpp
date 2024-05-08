@@ -6,8 +6,8 @@ TextureManager::TextureManager()
 	//Troll texture
 	textureInfo.push_back(stbi_load("Assets/Textures/Troll.png", &width, &heigth, &nrChannels, 4));
 
-	//Rock texture
-	textureInfo.push_back(stbi_load("Assets/Textures/Rock.png", &width, &heigth, &nrChannels, 4));
+	////Rock texture
+	//textureInfo.push_back(stbi_load("Assets/Textures/Rock.png", &width, &heigth, &nrChannels, 4));
 }
 
 void TextureManager::InitTexture()

@@ -1,5 +1,4 @@
 #include "GLManager.h"
-#include "ShaderProgramManager.h"
 #include "GameObjectManager.h"
 #include "TimeManager.h"
 #include "InputManager.h"
@@ -56,7 +55,6 @@ int main() {
 
 		//Deactive & delete program
 		glUseProgram(0);
-		SHADERPROGRAM_MANAGER.DeletePrograms();
 	}
 	else {
 		std::cout << "Program Crashes" << std::endl;

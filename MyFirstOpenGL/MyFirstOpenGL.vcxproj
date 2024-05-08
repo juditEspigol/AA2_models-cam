@@ -29,7 +29,6 @@
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="ShaderProgramManager.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="STB.cpp" />
     <ClCompile Include="TextureManager.cpp" />
@@ -57,7 +56,6 @@
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="Rock.h" />
     <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="ShaderProgramManager.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Transform.h" />
