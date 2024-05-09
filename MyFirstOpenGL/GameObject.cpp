@@ -16,10 +16,6 @@ GameObject::GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scal
     {
         CreatePrimitive();
     }
-
-    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
-    translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-    rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.x);
 }
 
 GameObject::~GameObject()
@@ -148,6 +144,10 @@ void GameObject::InitTexture(GLuint texture, const char* texturePath)
 void GameObject::InitProgramValues()
 {
     glUseProgram(shaderProgram);
+
+    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
+    translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+    rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.x);
 
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
