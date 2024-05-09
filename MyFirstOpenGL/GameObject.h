@@ -42,11 +42,12 @@ protected:
 	unsigned char* textureInfo;
 
 	bool hasTexture;
+	GLenum modele;
 
 public:
 
 	GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model,
-		std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath, bool hasTexture);
+		std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath, bool hasTexture, GLenum modele);
 
 	~GameObject();
 

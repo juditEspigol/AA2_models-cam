@@ -1,10 +1,11 @@
 #include "GameObject.h"
 
 GameObject::GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scale, Model model,
-	std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath, bool hasTexture)
+	std::string vertexShader, std::string geometryShader, std::string fragmentShader, GLuint texture, const char* texturePath, bool hasTexture, GLenum modele)
     : transform(Transform(_position, _rotation, _scale)), velocity(1.f), angularVelocity(100.f), scaleVelocity(100.f), isActive(true) {
     
     this->hasTexture = hasTexture;
+    this->modele = modele;
 
     InitShader(vertexShader, geometryShader, fragmentShader);
 
@@ -16,6 +17,10 @@ GameObject::GameObject(glm::vec3 _position, glm::vec3 _rotation, glm::vec3 _scal
     {
         CreatePrimitive();
     }
+
+    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
+    translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
+    rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.x);
 }
 
 GameObject::~GameObject()
@@ -50,11 +55,8 @@ void GameObject::CreateModel(GLuint texture, const char* texturePath, Model mode
     glBufferData(GL_ARRAY_BUFFER, model.uvs.size() * sizeof(float), model.uvs.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 
-
-
     //Activamos el atributo 0 (posiciones por defecto)
     glEnableVertexAttribArray(0);
-
     glEnableVertexAttribArray(1);
 
     //Desvinculamos VAO y VBO
@@ -81,17 +83,17 @@ void GameObject::CreatePrimitive()
         +0.2f, +0.2f, +0.2f  // 0
     };
 
-    numVertexs = vertexs.size() / 3;
+    this->numVertexs = vertexs.size() / 3;
 
     // Generate VAO/VBO
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
+    glGenVertexArrays(1, &this->VAO);
+    glGenBuffers(1, &this->VBO);
 
     // Define active VAO
     glBindVertexArray(VAO);
 
     // Define positions VBO as active
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
     glBufferData(GL_ARRAY_BUFFER, vertexs.size() * sizeof(float), vertexs.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
@@ -145,10 +147,6 @@ void GameObject::InitProgramValues()
 {
     glUseProgram(shaderProgram);
 
-    scaleMatrix = MatrixUtilities::GenerateScaleMatrix(transform.scale);
-    translationMatrix = MatrixUtilities::GenerateTranslationMatrix(transform.position);
-    rotationMatrix = MatrixUtilities::GenerateRotationMatrix(transform.rotation, transform.rotation.x);
-
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "translationMatrix"), 1, GL_FALSE, glm::value_ptr(translationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "rotationMatrix"), 1, GL_FALSE, glm::value_ptr(rotationMatrix));
     glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "scaleMatrix"), 1, GL_FALSE, glm::value_ptr(scaleMatrix));
@@ -167,7 +165,7 @@ void GameObject::Render()
     InitProgramValues();
 
     // Dibujamos
-    glDrawArrays(GL_TRIANGLES, 0, this->numVertexs);
+    glDrawArrays(modele, 0, this->numVertexs);
 
     //Desvinculamos VAO
     glBindVertexArray(0);
